@@ -3,11 +3,13 @@ import { displayMenu } from "./menu.js";
 
 const prompt = promptSync();
 
+// O(1) for all properties
 export const riceCooker = {
   ricePresent: false,
   riceCooked: false,
   activeProcess: false,
 
+  // Time complexity: O(1)
   addRice() {
     if (!this.ricePresent) {
       this.ricePresent = true;
@@ -17,6 +19,7 @@ export const riceCooker = {
     }
   },
 
+  // Time complexity: O(1)
   cookRice() {
     if (!this.ricePresent) {
       console.log("Cannot cook. Rice cooker is empty.");
@@ -35,6 +38,7 @@ export const riceCooker = {
     }
   },
 
+  // Time complexity: O(1)
   steam() {
     if (!this.ricePresent) {
       console.log("Cannot steam. Rice cooker is empty.");
@@ -42,12 +46,13 @@ export const riceCooker = {
       console.log("Process already in progress.");
     } else {
       console.log("Steaming in progress...");
-      this.delaySync(1500);
+      this.delaySync(1500); 
       this.activeProcess = false;
       console.log("Steaming completed!");
     }
   },
 
+  // Time complexity: O(1)
   keepWarm() {
     if (!this.ricePresent) {
       console.log("Cannot keep warm. Rice cooker is empty.");
@@ -61,6 +66,7 @@ export const riceCooker = {
     }
   },
 
+  // Time complexity: O(1)
   removeRice() {
     if (this.ricePresent) {
       this.ricePresent = false;
@@ -72,12 +78,14 @@ export const riceCooker = {
     }
   },
 
+  // Time complexity: O(ms) (ms is the delay duration)
   delaySync(ms) {
     const start = Date.now();
     while (Date.now() - start < ms) {}
   },
 };
 
+// Time complexity: O(1) (per iteration)
 export function simulateRiceCooker() {
   while (true) {
     displayMenu();
